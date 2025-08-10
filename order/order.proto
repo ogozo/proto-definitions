@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package order;
 
+import "google/protobuf/timestamp.proto";
+
 option go_package = "github.com/ogozo/proto-definitions/gen/go/order";
 
 enum OrderStatus {
@@ -23,7 +25,9 @@ message Order {
     repeated OrderItem items = 3;
     double total_price = 4;
     OrderStatus status = 5;
+    google.protobuf.Timestamp created_at = 6;
 }
+
 
 message CreateOrderRequest {
     string user_id = 1;
