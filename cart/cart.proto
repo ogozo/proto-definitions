@@ -18,6 +18,17 @@ message GetCartResponse {
     repeated CartItem items = 2;
 }
 
+message AddItemToCartRequest {
+    string user_id = 1;
+    CartItem item = 2;
+}
+
+message AddItemToCartResponse {
+    string user_id = 1;
+    repeated CartItem items = 2;
+}
+
 service CartService {
     rpc GetCart(GetCartRequest) returns (GetCartResponse);
+    rpc AddItemToCart(AddItemToCartRequest) returns (AddItemToCartResponse);
 }
