@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package cart;
+
+option go_package = "github.com/ogozo/proto-definitions/gen/go/cart";
+
+message CartItem {
+    string product_id = 1;
+    int32 quantity = 2;
+}
+
+message GetCartRequest {
+    string user_id = 1;
+}
+
+message GetCartResponse {
+    string user_id = 1;
+    repeated CartItem items = 2;
+}
+
+service CartService {
+    rpc GetCart(GetCartRequest) returns (GetCartResponse);
+}

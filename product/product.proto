@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package product;
+
+option go_package = "github.com/ogozo/proto-definitions/gen/go/product";
+
+message Product {
+    string id = 1;
+    string name = 2;
+    string description = 3;
+    double price = 4;
+    int32 stock_quantity = 5;
+}
+
+message GetProductRequest {
+    string product_id = 1;
+}
+
+message GetProductResponse {
+    Product product = 1;
+}
+
+service ProductService {
+    rpc GetProduct(GetProductRequest) returns (GetProductResponse);
+}
