@@ -31,7 +31,21 @@ message CreateProductResponse {
     Product product = 1;
 }
 
+message UpdateStockRequest {
+    message StockUpdateItem {
+        string product_id = 1;
+        int32 quantity_to_reduce = 2;
+    }
+    repeated StockUpdateItem items = 1;
+    string order_id = 2;
+}
+
+message UpdateStockResponse {
+    bool success = 1;
+}
+
 service ProductService {
     rpc GetProduct(GetProductRequest) returns (GetProductResponse);
     rpc CreateProduct(CreateProductRequest) returns (CreateProductResponse);
+    rpc UpdateStock(UpdateStockRequest) returns (UpdateStockResponse);
 }

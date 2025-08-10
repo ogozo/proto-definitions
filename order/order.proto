@@ -34,6 +34,16 @@ message CreateOrderResponse {
     Order order = 1;
 }
 
+message GetOrderRequest {
+    string order_id = 1;
+    string user_id = 2;
+}
+
+message GetOrderResponse {
+    Order order = 1;
+}
+
 service OrderService {
     rpc CreateOrder(CreateOrderRequest) returns (CreateOrderResponse);
+    rpc GetOrder(GetOrderRequest) returns (GetOrderResponse);
 }

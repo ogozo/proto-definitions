@@ -28,7 +28,16 @@ message AddItemToCartResponse {
     repeated CartItem items = 2;
 }
 
+message ClearCartRequest {
+    string user_id = 1;
+}
+
+message ClearCartResponse {
+    bool success = 1;
+}
+
 service CartService {
     rpc GetCart(GetCartRequest) returns (GetCartResponse);
     rpc AddItemToCart(AddItemToCartRequest) returns (AddItemToCartResponse);
+    rpc ClearCart(ClearCartRequest) returns (ClearCartResponse);
 }
